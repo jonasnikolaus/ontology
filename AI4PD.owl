@@ -1,0 +1,1203 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns="http://www.semanticweb.org/gerschuetz/forcude/AI4PD#"
+     xml:base="http://www.semanticweb.org/gerschuetz/forcude/AI4PD"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+     xmlns:AI4PD="http://www.semanticweb.org/gerschuetz/forcude/AI4PD:">
+    <owl:Ontology rdf:about="http://www.semanticweb.org/gerschuetz/forcude/AI4PD"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Annotation properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.w3.org/2004/02/skos/core#definition -->
+
+    <owl:AnnotationProperty rdf:about="http://www.w3.org/2004/02/skos/core#definition"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/gerschuetz/forcude/AI4PD:UsesData -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/gerschuetz/forcude/AI4PD:UsesData">
+        <owl:inverseOf rdf:resource="http://www.semanticweb.org/gerschuetz/forcude/AI4PD:generates"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/gerschuetz/forcude/AI4PD:canUse -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/gerschuetz/forcude/AI4PD:canUse">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <owl:inverseOf rdf:resource="http://www.semanticweb.org/gerschuetz/forcude/AI4PD:suitableFor"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/gerschuetz/forcude/AI4PD:doesAnalysis -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/gerschuetz/forcude/AI4PD:doesAnalysis">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/gerschuetz/forcude/AI4PD:doneBy -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/gerschuetz/forcude/AI4PD:doneBy">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <owl:inverseOf rdf:resource="http://www.semanticweb.org/gerschuetz/forcude/AI4PD:workingOn"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/gerschuetz/forcude/AI4PD:generatedBy -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/gerschuetz/forcude/AI4PD:generatedBy">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <owl:inverseOf rdf:resource="http://www.semanticweb.org/gerschuetz/forcude/AI4PD:generates"/>
+        <owl:inverseOf rdf:resource="http://www.semanticweb.org/gerschuetz/forcude/AI4PD:usedBy"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/gerschuetz/forcude/AI4PD:generates -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/gerschuetz/forcude/AI4PD:generates">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/gerschuetz/forcude/AI4PD:hasInput -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/gerschuetz/forcude/AI4PD:hasInput">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <owl:inverseOf rdf:resource="http://www.semanticweb.org/gerschuetz/forcude/AI4PD:hasOutput"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/gerschuetz/forcude/AI4PD:hasLicence -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/gerschuetz/forcude/AI4PD:hasLicence">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/gerschuetz/forcude/AI4PD:hasMember -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/gerschuetz/forcude/AI4PD:hasMember">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <owl:inverseOf rdf:resource="http://www.semanticweb.org/gerschuetz/forcude/AI4PD:memberOf"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/gerschuetz/forcude/AI4PD:hasOutput -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/gerschuetz/forcude/AI4PD:hasOutput">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/gerschuetz/forcude/AI4PD:hasSoftwareCategory -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/gerschuetz/forcude/AI4PD:hasSoftwareCategory">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/gerschuetz/forcude/AI4PD:hasSubproces -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/gerschuetz/forcude/AI4PD:hasSubproces">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <owl:inverseOf rdf:resource="http://www.semanticweb.org/gerschuetz/forcude/AI4PD:isPartOfProces"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/gerschuetz/forcude/AI4PD:hasTask -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/gerschuetz/forcude/AI4PD:hasTask">
+        <owl:inverseOf rdf:resource="http://www.semanticweb.org/gerschuetz/forcude/AI4PD:isPartOfProces"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/gerschuetz/forcude/AI4PD:implementedIn -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/gerschuetz/forcude/AI4PD:implementedIn">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/gerschuetz/forcude/AI4PD:implementsMethod -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/gerschuetz/forcude/AI4PD:implementsMethod">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <owl:inverseOf rdf:resource="http://www.semanticweb.org/gerschuetz/forcude/AI4PD:isImplementedBy"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/gerschuetz/forcude/AI4PD:integrating -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/gerschuetz/forcude/AI4PD:integrating">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <owl:inverseOf rdf:resource="http://www.semanticweb.org/gerschuetz/forcude/AI4PD:partOf"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/gerschuetz/forcude/AI4PD:isImplementedBy -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/gerschuetz/forcude/AI4PD:isImplementedBy">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/gerschuetz/forcude/AI4PD:isPartOfProces -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/gerschuetz/forcude/AI4PD:isPartOfProces">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/gerschuetz/forcude/AI4PD:isSpecifiedBy -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/gerschuetz/forcude/AI4PD:isSpecifiedBy">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <owl:inverseOf rdf:resource="http://www.semanticweb.org/gerschuetz/forcude/AI4PD:specifies"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/gerschuetz/forcude/AI4PD:isUserType -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/gerschuetz/forcude/AI4PD:isUserType">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/gerschuetz/forcude/AI4PD:memberOf -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/gerschuetz/forcude/AI4PD:memberOf">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/gerschuetz/forcude/AI4PD:partOf -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/gerschuetz/forcude/AI4PD:partOf">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/gerschuetz/forcude/AI4PD:specifies -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/gerschuetz/forcude/AI4PD:specifies">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/gerschuetz/forcude/AI4PD:suitableFor -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/gerschuetz/forcude/AI4PD:suitableFor">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/gerschuetz/forcude/AI4PD:usedBy -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/gerschuetz/forcude/AI4PD:usedBy">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <owl:inverseOf rdf:resource="http://www.semanticweb.org/gerschuetz/forcude/AI4PD:using"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/gerschuetz/forcude/AI4PD:using -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/gerschuetz/forcude/AI4PD:using">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/gerschuetz/forcude/AI4PD:workingOn -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/gerschuetz/forcude/AI4PD:workingOn">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.w3.org/2002/07/owl#topObjectProperty -->
+
+    <rdf:Description rdf:about="http://www.w3.org/2002/07/owl#topObjectProperty">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+    </rdf:Description>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/gerschuetz/forcude/AI4PD:ASCIIData -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/gerschuetz/forcude/AI4PD:ASCIIData">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/gerschuetz/forcude/AI4PD:Data"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/gerschuetz/forcude/AI4PD:Analysis -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/gerschuetz/forcude/AI4PD:Analysis"/>
+    
+
+
+    <!-- http://www.semanticweb.org/gerschuetz/forcude/AI4PD:Approval -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/gerschuetz/forcude/AI4PD:Approval">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/gerschuetz/forcude/AI4PD:TaskCluster"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/gerschuetz/forcude/AI4PD:Assoziation -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/gerschuetz/forcude/AI4PD:Assoziation">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/gerschuetz/forcude/AI4PD:DataDrivenTask"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/gerschuetz/forcude/AI4PD:CADData -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/gerschuetz/forcude/AI4PD:CADData">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/gerschuetz/forcude/AI4PD:EngineeringData"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/gerschuetz/forcude/AI4PD:CSVData -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/gerschuetz/forcude/AI4PD:CSVData">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/gerschuetz/forcude/AI4PD:ASCIIData"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/gerschuetz/forcude/AI4PD:Classification -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/gerschuetz/forcude/AI4PD:Classification">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/gerschuetz/forcude/AI4PD:DataDrivenTask"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/gerschuetz/forcude/AI4PD:Clustering -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/gerschuetz/forcude/AI4PD:Clustering">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/gerschuetz/forcude/AI4PD:DataDrivenTask"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/gerschuetz/forcude/AI4PD:Commissioning -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/gerschuetz/forcude/AI4PD:Commissioning">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/gerschuetz/forcude/AI4PD:TaskCluster"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/gerschuetz/forcude/AI4PD:CreoAssembly -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/gerschuetz/forcude/AI4PD:CreoAssembly">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/gerschuetz/forcude/AI4PD:CADData"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/gerschuetz/forcude/AI4PD:CreoPart -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/gerschuetz/forcude/AI4PD:CreoPart">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/gerschuetz/forcude/AI4PD:CADData"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/gerschuetz/forcude/AI4PD:Data -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/gerschuetz/forcude/AI4PD:Data">
+        <rdfs:subClassOf>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.semanticweb.org/gerschuetz/forcude/AI4PD:usedBy"/>
+                        <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/gerschuetz/forcude/AI4PD:Subprocess"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.semanticweb.org/gerschuetz/forcude/AI4PD:usedBy"/>
+                        <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/gerschuetz/forcude/AI4PD:Task"/>
+                    </owl:Restriction>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/gerschuetz/forcude/AI4PD:generatedBy"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/gerschuetz/forcude/AI4PD:Task"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/gerschuetz/forcude/AI4PD:generatedBy"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/gerschuetz/forcude/AI4PD:Tool"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/gerschuetz/forcude/AI4PD:DataCollection -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/gerschuetz/forcude/AI4PD:DataCollection">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/gerschuetz/forcude/AI4PD:TaskCluster"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/gerschuetz/forcude/AI4PD:DataDrivenMethod -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/gerschuetz/forcude/AI4PD:DataDrivenMethod">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/gerschuetz/forcude/AI4PD:isImplementedBy"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/gerschuetz/forcude/AI4PD:Tool"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/gerschuetz/forcude/AI4PD:specifies"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/gerschuetz/forcude/AI4PD:DataDrivenTask"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/gerschuetz/forcude/AI4PD:DataDrivenTask -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/gerschuetz/forcude/AI4PD:DataDrivenTask">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/gerschuetz/forcude/AI4PD:isSpecifiedBy"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/gerschuetz/forcude/AI4PD:DataDrivenMethod"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/gerschuetz/forcude/AI4PD:usedBy"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/gerschuetz/forcude/AI4PD:Tool"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/gerschuetz/forcude/AI4PD:using"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/gerschuetz/forcude/AI4PD:DataDrivenTechnique"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/gerschuetz/forcude/AI4PD:DataDrivenTechnique -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/gerschuetz/forcude/AI4PD:DataDrivenTechnique">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/gerschuetz/forcude/AI4PD:doesAnalysis"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/gerschuetz/forcude/AI4PD:Analysis"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/gerschuetz/forcude/AI4PD:usedBy"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/gerschuetz/forcude/AI4PD:DataDrivenTask"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/gerschuetz/forcude/AI4PD:DataHandling -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/gerschuetz/forcude/AI4PD:DataHandling">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/gerschuetz/forcude/AI4PD:DataDrivenTechnique"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/gerschuetz/forcude/AI4PD:DeepLearning -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/gerschuetz/forcude/AI4PD:DeepLearning">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/gerschuetz/forcude/AI4PD:DataDrivenTask"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/gerschuetz/forcude/AI4PD:DescriptiveAnalysis -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/gerschuetz/forcude/AI4PD:DescriptiveAnalysis">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/gerschuetz/forcude/AI4PD:Analysis"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/gerschuetz/forcude/AI4PD:Design -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/gerschuetz/forcude/AI4PD:Design">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/gerschuetz/forcude/AI4PD:UserGroup"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/gerschuetz/forcude/AI4PD:DiagnosticAnalysis -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/gerschuetz/forcude/AI4PD:DiagnosticAnalysis">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/gerschuetz/forcude/AI4PD:Analysis"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/gerschuetz/forcude/AI4PD:Document -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/gerschuetz/forcude/AI4PD:Document">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/gerschuetz/forcude/AI4PD:Data"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/gerschuetz/forcude/AI4PD:EngineeringData -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/gerschuetz/forcude/AI4PD:EngineeringData">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/gerschuetz/forcude/AI4PD:Data"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/gerschuetz/forcude/AI4PD:Evaluation -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/gerschuetz/forcude/AI4PD:Evaluation">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/gerschuetz/forcude/AI4PD:DataDrivenTask"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/gerschuetz/forcude/AI4PD:ExcelDocument -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/gerschuetz/forcude/AI4PD:ExcelDocument">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/gerschuetz/forcude/AI4PD:Document"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/gerschuetz/forcude/AI4PD:GUIProgram -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/gerschuetz/forcude/AI4PD:GUIProgram">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/gerschuetz/forcude/AI4PD:SoftwareCategory"/>
+        <owl:disjointWith rdf:resource="http://www.semanticweb.org/gerschuetz/forcude/AI4PD:ProgrammingPackage"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/gerschuetz/forcude/AI4PD:JSONData -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/gerschuetz/forcude/AI4PD:JSONData">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/gerschuetz/forcude/AI4PD:ASCIIData"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/gerschuetz/forcude/AI4PD:KnowledgeManagement -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/gerschuetz/forcude/AI4PD:KnowledgeManagement">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/gerschuetz/forcude/AI4PD:TaskCluster"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/gerschuetz/forcude/AI4PD:Licence -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/gerschuetz/forcude/AI4PD:Licence"/>
+    
+
+
+    <!-- http://www.semanticweb.org/gerschuetz/forcude/AI4PD:Management -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/gerschuetz/forcude/AI4PD:Management">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/gerschuetz/forcude/AI4PD:UserGroup"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/gerschuetz/forcude/AI4PD:ModelHandling -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/gerschuetz/forcude/AI4PD:ModelHandling">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/gerschuetz/forcude/AI4PD:DataDrivenTechnique"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/gerschuetz/forcude/AI4PD:Modelling -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/gerschuetz/forcude/AI4PD:Modelling">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/gerschuetz/forcude/AI4PD:DataDrivenTechnique"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/gerschuetz/forcude/AI4PD:PDFDocument -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/gerschuetz/forcude/AI4PD:PDFDocument">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/gerschuetz/forcude/AI4PD:Document"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/gerschuetz/forcude/AI4PD:Person -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/gerschuetz/forcude/AI4PD:Person">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/gerschuetz/forcude/AI4PD:isUserType"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/gerschuetz/forcude/AI4PD:UserGroup"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/gerschuetz/forcude/AI4PD:memberOf"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/gerschuetz/forcude/AI4PD:Team"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/gerschuetz/forcude/AI4PD:workingOn"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/gerschuetz/forcude/AI4PD:Task"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <owl:disjointWith rdf:resource="http://www.semanticweb.org/gerschuetz/forcude/AI4PD:Team"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/gerschuetz/forcude/AI4PD:PowerpointDocument -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/gerschuetz/forcude/AI4PD:PowerpointDocument">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/gerschuetz/forcude/AI4PD:Document"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/gerschuetz/forcude/AI4PD:PraedictiveAnalysis -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/gerschuetz/forcude/AI4PD:PraedictiveAnalysis">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/gerschuetz/forcude/AI4PD:Analysis"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/gerschuetz/forcude/AI4PD:PraemissiveLicence -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/gerschuetz/forcude/AI4PD:PraemissiveLicence">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/gerschuetz/forcude/AI4PD:Licence"/>
+        <owl:disjointWith rdf:resource="http://www.semanticweb.org/gerschuetz/forcude/AI4PD:ProprietaryLicence"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/gerschuetz/forcude/AI4PD:Preparation -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/gerschuetz/forcude/AI4PD:Preparation">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/gerschuetz/forcude/AI4PD:DataDrivenTask"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/gerschuetz/forcude/AI4PD:ProductDevelopmentProcess -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/gerschuetz/forcude/AI4PD:ProductDevelopmentProcess">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/gerschuetz/forcude/AI4PD:hasSubproces"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/gerschuetz/forcude/AI4PD:Subprocess"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/gerschuetz/forcude/AI4PD:Programming -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/gerschuetz/forcude/AI4PD:Programming">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/gerschuetz/forcude/AI4PD:UserGroup"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/gerschuetz/forcude/AI4PD:ProgrammingLanguage -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/gerschuetz/forcude/AI4PD:ProgrammingLanguage"/>
+    
+
+
+    <!-- http://www.semanticweb.org/gerschuetz/forcude/AI4PD:ProgrammingPackage -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/gerschuetz/forcude/AI4PD:ProgrammingPackage">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/gerschuetz/forcude/AI4PD:SoftwareCategory"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/gerschuetz/forcude/AI4PD:ProprietaryLicence -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/gerschuetz/forcude/AI4PD:ProprietaryLicence">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/gerschuetz/forcude/AI4PD:Licence"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/gerschuetz/forcude/AI4PD:Regression -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/gerschuetz/forcude/AI4PD:Regression">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/gerschuetz/forcude/AI4PD:DataDrivenTask"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/gerschuetz/forcude/AI4PD:ReinforcementLearning -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/gerschuetz/forcude/AI4PD:ReinforcementLearning">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/gerschuetz/forcude/AI4PD:DataDrivenTask"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/gerschuetz/forcude/AI4PD:ReplicationOfInterrelationships -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/gerschuetz/forcude/AI4PD:ReplicationOfInterrelationships">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/gerschuetz/forcude/AI4PD:TaskCluster"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/gerschuetz/forcude/AI4PD:Reporting -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/gerschuetz/forcude/AI4PD:Reporting">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/gerschuetz/forcude/AI4PD:TaskCluster"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/gerschuetz/forcude/AI4PD:ResultAnalysis -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/gerschuetz/forcude/AI4PD:ResultAnalysis">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/gerschuetz/forcude/AI4PD:TaskCluster"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/gerschuetz/forcude/AI4PD:Simulation -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/gerschuetz/forcude/AI4PD:Simulation">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/gerschuetz/forcude/AI4PD:UserGroup"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/gerschuetz/forcude/AI4PD:SimulationModel -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/gerschuetz/forcude/AI4PD:SimulationModel">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/gerschuetz/forcude/AI4PD:EngineeringData"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/gerschuetz/forcude/AI4PD:SimulationResult -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/gerschuetz/forcude/AI4PD:SimulationResult">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/gerschuetz/forcude/AI4PD:EngineeringData"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/gerschuetz/forcude/AI4PD:SoftwareCategory -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/gerschuetz/forcude/AI4PD:SoftwareCategory"/>
+    
+
+
+    <!-- http://www.semanticweb.org/gerschuetz/forcude/AI4PD:Step -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/gerschuetz/forcude/AI4PD:Step">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/gerschuetz/forcude/AI4PD:CADData"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/gerschuetz/forcude/AI4PD:Subprocess -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/gerschuetz/forcude/AI4PD:Subprocess">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/gerschuetz/forcude/AI4PD:ProductDevelopmentProcess"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/gerschuetz/forcude/AI4PD:UsesData"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/gerschuetz/forcude/AI4PD:Data"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/gerschuetz/forcude/AI4PD:doneBy"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/gerschuetz/forcude/AI4PD:Team"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/gerschuetz/forcude/AI4PD:generates"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/gerschuetz/forcude/AI4PD:Data"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/gerschuetz/forcude/AI4PD:hasTask"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/gerschuetz/forcude/AI4PD:Task"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/gerschuetz/forcude/AI4PD:isPartOfProces"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/gerschuetz/forcude/AI4PD:ProductDevelopmentProcess"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/gerschuetz/forcude/AI4PD:isPartOfProces"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/gerschuetz/forcude/AI4PD:Subprocess"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/gerschuetz/forcude/AI4PD:partOf"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/gerschuetz/forcude/AI4PD:TaskCluster"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/gerschuetz/forcude/AI4PD:Task -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/gerschuetz/forcude/AI4PD:Task">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/gerschuetz/forcude/AI4PD:ProductDevelopmentProcess"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/gerschuetz/forcude/AI4PD:doneBy"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/gerschuetz/forcude/AI4PD:Person"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/gerschuetz/forcude/AI4PD:generates"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/gerschuetz/forcude/AI4PD:Data"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/gerschuetz/forcude/AI4PD:isPartOfProces"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/gerschuetz/forcude/AI4PD:Subprocess"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/gerschuetz/forcude/AI4PD:TaskCluster -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/gerschuetz/forcude/AI4PD:TaskCluster">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/gerschuetz/forcude/AI4PD:ProductDevelopmentProcess"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/gerschuetz/forcude/AI4PD:suitableFor"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/gerschuetz/forcude/AI4PD:DataDrivenTechnique"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/gerschuetz/forcude/AI4PD:Team -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/gerschuetz/forcude/AI4PD:Team">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/gerschuetz/forcude/AI4PD:hasMember"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/gerschuetz/forcude/AI4PD:Person"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/gerschuetz/forcude/AI4PD:workingOn"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/gerschuetz/forcude/AI4PD:ProductDevelopmentProcess"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/gerschuetz/forcude/AI4PD:Tool -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/gerschuetz/forcude/AI4PD:Tool">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/gerschuetz/forcude/AI4PD:hasInput"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/gerschuetz/forcude/AI4PD:Data"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/gerschuetz/forcude/AI4PD:hasOutput"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/gerschuetz/forcude/AI4PD:Data"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/gerschuetz/forcude/AI4PD:implementsMethod"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/gerschuetz/forcude/AI4PD:DataDrivenMethod"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/gerschuetz/forcude/AI4PD:partOf"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/gerschuetz/forcude/AI4PD:Toolbox"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/gerschuetz/forcude/AI4PD:using"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/gerschuetz/forcude/AI4PD:DataDrivenTask"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/gerschuetz/forcude/AI4PD:Toolbox -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/gerschuetz/forcude/AI4PD:Toolbox">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/gerschuetz/forcude/AI4PD:hasLicence"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/gerschuetz/forcude/AI4PD:Licence"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/gerschuetz/forcude/AI4PD:hasSoftwareCategory"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/gerschuetz/forcude/AI4PD:SoftwareCategory"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/gerschuetz/forcude/AI4PD:implementedIn"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/gerschuetz/forcude/AI4PD:ProgrammingLanguage"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/gerschuetz/forcude/AI4PD:integrating"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/gerschuetz/forcude/AI4PD:Tool"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/gerschuetz/forcude/AI4PD:suitableFor"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/gerschuetz/forcude/AI4PD:UserGroup"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/gerschuetz/forcude/AI4PD:using"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/gerschuetz/forcude/AI4PD:Toolbox"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/gerschuetz/forcude/AI4PD:UserGroup -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/gerschuetz/forcude/AI4PD:UserGroup">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/gerschuetz/forcude/AI4PD:hasMember"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/gerschuetz/forcude/AI4PD:Person"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/gerschuetz/forcude/AI4PD:using"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/gerschuetz/forcude/AI4PD:Toolbox"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/gerschuetz/forcude/AI4PD:UsingData -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/gerschuetz/forcude/AI4PD:UsingData">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/gerschuetz/forcude/AI4PD:TaskCluster"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/gerschuetz/forcude/AI4PD:Visualization -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/gerschuetz/forcude/AI4PD:Visualization">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/gerschuetz/forcude/AI4PD:DataDrivenTask"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/gerschuetz/forcude/AI4PD:WordDocument -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/gerschuetz/forcude/AI4PD:WordDocument">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/gerschuetz/forcude/AI4PD:Document"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/gerschuetz/forcude/AI4PD:XMLData -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/gerschuetz/forcude/AI4PD:XMLData">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/gerschuetz/forcude/AI4PD:ASCIIData"/>
+    </owl:Class>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Individuals
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/gerschuetz/forcude/AI4PD:RapidMiner -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/gerschuetz/forcude/AI4PD:RapidMiner">
+        <rdf:type rdf:resource="http://www.semanticweb.org/gerschuetz/forcude/AI4PD:Toolbox"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/gerschuetz/forcude/AI4PD:RapidMinerM5PModell -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/gerschuetz/forcude/AI4PD:RapidMinerM5PModell">
+        <rdf:type rdf:resource="http://www.semanticweb.org/gerschuetz/forcude/AI4PD:Tool"/>
+        <AI4PD:implementsMethod rdf:resource="http://www.semanticweb.org/gerschuetz/forcude/AI4PD:Regression-Tree_(M5P)"/>
+        <AI4PD:partOf rdf:resource="http://www.semanticweb.org/gerschuetz/forcude/AI4PD:RapidMiner"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/gerschuetz/forcude/AI4PD:Regression-Tree_(M5P) -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/gerschuetz/forcude/AI4PD:Regression-Tree_(M5P)">
+        <rdf:type rdf:resource="http://www.semanticweb.org/gerschuetz/forcude/AI4PD:DataDrivenMethod"/>
+        <AI4PD:isImplementedBy rdf:resource="http://www.semanticweb.org/gerschuetz/forcude/AI4PD:RapidMinerM5PModell"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // General axioms
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    <rdf:Description>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDisjointClasses"/>
+        <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://www.semanticweb.org/gerschuetz/forcude/AI4PD:ASCIIData"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/gerschuetz/forcude/AI4PD:Document"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/gerschuetz/forcude/AI4PD:EngineeringData"/>
+        </owl:members>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDisjointClasses"/>
+        <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://www.semanticweb.org/gerschuetz/forcude/AI4PD:Analysis"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/gerschuetz/forcude/AI4PD:Data"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/gerschuetz/forcude/AI4PD:DataDrivenMethod"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/gerschuetz/forcude/AI4PD:DataDrivenTask"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/gerschuetz/forcude/AI4PD:DataDrivenTechnique"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/gerschuetz/forcude/AI4PD:Licence"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/gerschuetz/forcude/AI4PD:ProductDevelopmentProcess"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/gerschuetz/forcude/AI4PD:ProgrammingLanguage"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/gerschuetz/forcude/AI4PD:SoftwareCategory"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/gerschuetz/forcude/AI4PD:Tool"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/gerschuetz/forcude/AI4PD:Toolbox"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/gerschuetz/forcude/AI4PD:UserGroup"/>
+        </owl:members>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDisjointClasses"/>
+        <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://www.semanticweb.org/gerschuetz/forcude/AI4PD:Approval"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/gerschuetz/forcude/AI4PD:Commissioning"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/gerschuetz/forcude/AI4PD:DataCollection"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/gerschuetz/forcude/AI4PD:KnowledgeManagement"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/gerschuetz/forcude/AI4PD:ReplicationOfInterrelationships"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/gerschuetz/forcude/AI4PD:Reporting"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/gerschuetz/forcude/AI4PD:ResultAnalysis"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/gerschuetz/forcude/AI4PD:UsingData"/>
+        </owl:members>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDisjointClasses"/>
+        <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://www.semanticweb.org/gerschuetz/forcude/AI4PD:Assoziation"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/gerschuetz/forcude/AI4PD:Classification"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/gerschuetz/forcude/AI4PD:Clustering"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/gerschuetz/forcude/AI4PD:DeepLearning"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/gerschuetz/forcude/AI4PD:Evaluation"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/gerschuetz/forcude/AI4PD:Preparation"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/gerschuetz/forcude/AI4PD:Regression"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/gerschuetz/forcude/AI4PD:ReinforcementLearning"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/gerschuetz/forcude/AI4PD:Visualization"/>
+        </owl:members>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDisjointClasses"/>
+        <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://www.semanticweb.org/gerschuetz/forcude/AI4PD:CADData"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/gerschuetz/forcude/AI4PD:SimulationModel"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/gerschuetz/forcude/AI4PD:SimulationResult"/>
+        </owl:members>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDisjointClasses"/>
+        <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://www.semanticweb.org/gerschuetz/forcude/AI4PD:CSVData"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/gerschuetz/forcude/AI4PD:JSONData"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/gerschuetz/forcude/AI4PD:XMLData"/>
+        </owl:members>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDisjointClasses"/>
+        <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://www.semanticweb.org/gerschuetz/forcude/AI4PD:CreoAssembly"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/gerschuetz/forcude/AI4PD:CreoPart"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/gerschuetz/forcude/AI4PD:Step"/>
+        </owl:members>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDisjointClasses"/>
+        <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://www.semanticweb.org/gerschuetz/forcude/AI4PD:DataHandling"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/gerschuetz/forcude/AI4PD:ModelHandling"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/gerschuetz/forcude/AI4PD:Modelling"/>
+        </owl:members>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDisjointClasses"/>
+        <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://www.semanticweb.org/gerschuetz/forcude/AI4PD:DescriptiveAnalysis"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/gerschuetz/forcude/AI4PD:DiagnosticAnalysis"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/gerschuetz/forcude/AI4PD:PraedictiveAnalysis"/>
+        </owl:members>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDisjointClasses"/>
+        <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://www.semanticweb.org/gerschuetz/forcude/AI4PD:Design"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/gerschuetz/forcude/AI4PD:Management"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/gerschuetz/forcude/AI4PD:Programming"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/gerschuetz/forcude/AI4PD:Simulation"/>
+        </owl:members>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDisjointClasses"/>
+        <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://www.semanticweb.org/gerschuetz/forcude/AI4PD:ExcelDocument"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/gerschuetz/forcude/AI4PD:PDFDocument"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/gerschuetz/forcude/AI4PD:PowerpointDocument"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/gerschuetz/forcude/AI4PD:WordDocument"/>
+        </owl:members>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDisjointClasses"/>
+        <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://www.semanticweb.org/gerschuetz/forcude/AI4PD:Subprocess"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/gerschuetz/forcude/AI4PD:Task"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/gerschuetz/forcude/AI4PD:TaskCluster"/>
+        </owl:members>
+    </rdf:Description>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 4.5.9.2019-02-01T07:24:44Z) https://github.com/owlcs/owlapi -->
+
