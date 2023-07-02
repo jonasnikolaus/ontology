@@ -38,7 +38,8 @@ def execute_query(event=None):
 
     # Display the results in the result text widget
     for row in results:
-        result_text.insert(tk.END, str(row) + "\n")
+        result = [str(term).split('/')[-1] for term in row]
+        result_text.insert(tk.END, ' '.join(result) + "\n")
 
     # Set focus on the query text widget
     query_text.focus()
