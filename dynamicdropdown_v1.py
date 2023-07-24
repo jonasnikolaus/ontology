@@ -13,6 +13,12 @@ def extract_ai4pd_part(item):
     else:
         return None
 
+def extract_questionmark_part(item):
+    parts = item.split('?')
+    if len(parts) == 2:
+        return '?' + parts[1]
+    else:
+        return None
 
 def get_unique_subjects(graph):
     query = prepareQuery("SELECT DISTINCT ?s WHERE {?s ?p ?o}")
