@@ -15,19 +15,19 @@ def get_unique_subjects(graph):
     query = prepareQuery("SELECT DISTINCT ?s WHERE {?s ?p ?o}")
     results = graph.query(query)
     unique_subjects = [str(result[0]) for result in results]
-    return [extract_ai4pd_part(item) for item in unique_subjects if 'AI4PD:' in item]
+    return sorted([extract_ai4pd_part(item) for item in unique_subjects if 'AI4PD:' in item])
 
 def get_unique_predicates(graph):
     query = prepareQuery("SELECT DISTINCT ?p WHERE {?s ?p ?o}")
     results = graph.query(query)
     unique_predicates = [str(result[0]) for result in results]
-    return [extract_ai4pd_part(item) for item in unique_predicates if 'AI4PD:' in item]
+    return sorted([extract_ai4pd_part(item) for item in unique_predicates if 'AI4PD:' in item])
 
 def get_unique_objects(graph):
     query = prepareQuery("SELECT DISTINCT ?o WHERE {?s ?p ?o}")
     results = graph.query(query)
     unique_objects = [str(result[0]) for result in results]
-    return [extract_ai4pd_part(item) for item in unique_objects if 'AI4PD:' in item]
+    return sorted([extract_ai4pd_part(item) for item in unique_objects if 'AI4PD:' in item])
 
 def get_all_individuals(owl_file, query):
     owl = Namespace("http://www.w3.org/2002/07/owl#")
@@ -112,6 +112,11 @@ def create_query():
     else:
         current_query += f"\n\nPREFIX AI4PD: <http://www.semanticweb.org/gerschuetz/forcude/AI4PD:>\nselect * where {{\n{query_part}\n}}"
     window['query_text'].update(current_query)
+
+    # Reset the dropdowns
+    window['dropdown_subject'].update(set_to_index=0, value='')
+    window['dropdown_predicate'].update(set_to_index=0, value='')
+    window['dropdown_object'].update(set_to_index=0, value='')
 
 nlp = spacy.load("de_core_news_sm")
 
