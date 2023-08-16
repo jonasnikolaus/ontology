@@ -103,14 +103,13 @@ def create_query():
             if value:
                 query_part += f'{value} '
             if (i + 1) % 3 == 0 or i == len(selected_values) - 1:
-                if i != len(selected_values) - 1:
-                    query_part += '.\n'
+                query_part += '.\n'  # Add a period before the newline
 
     current_query = values['query_text'].strip()
     if "}" in current_query:
-        current_query = current_query.replace("}", f"{query_part}\n}}")
+        current_query = current_query.replace("}", f"{query_part}}}")
     else:
-        current_query += f"\n\nPREFIX AI4PD: <http://www.semanticweb.org/gerschuetz/forcude/AI4PD:>\nselect * where {{\n{query_part}\n}}"
+        current_query += f"\n\nPREFIX AI4PD: <http://www.semanticweb.org/gerschuetz/forcude/AI4PD:>\nselect * where {{\n{query_part}}}"
     window['query_text'].update(current_query)
 
     # Reset the dropdowns to empty value
