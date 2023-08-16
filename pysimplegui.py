@@ -44,13 +44,18 @@ def get_all_individuals(owl_file, query):
 
 # Funktion, um die SPARQL-Abfrage auszuführen und das Ergebnis im Textbereich anzuzeigen
 def execute_query():
-    query = values['query_text'].strip()
-    results = get_all_individuals(owl_file_path, query)
-    result_texts = []
-    for row in results:
-        result = [str(term).split('/')[-1] for term in row]
-        result_texts.append(' '.join(result))
-    window['result_text'].update('\n'.join(result_texts))
+    try:
+        query = values['query_text'].strip()
+        results = get_all_individuals(owl_file_path, query)
+        result_texts = []
+        for row in results:
+            result = [str(term).split('/')[-1] for term in row]
+            result_texts.append(' '.join(result))
+        if not result_texts:
+            result_texts.append("Keine Ergebnisse gefunden.")
+        window['result_text'].update('\n'.join(result_texts))
+    except Exception as e:
+        window['result_text'].update(f"Fehler: {str(e)}")
 
 # Funktion, um den eingegebenen Text zu verarbeiten und NLP-Informationen im Textbereich anzuzeigen
 def process_text():
@@ -118,7 +123,7 @@ def create_query():
     if "}" in current_query:
         current_query = current_query.replace("}", f"{query_part}}}")
     else:
-        current_query += f"\n\nPREFIX AI4PD: <http://www.semanticweb.org/gerschuetz/forcude/AI4PD:>\nselect * where {{\n{query_part}}}"
+        current_query += f"PREFIX AI4PD: <http://www.semanticweb.org/gerschuetz/forcude/AI4PD:>\nselect * where {{\n{query_part}}}"
     window['query_text'].update(current_query)
 
     # Reset the dropdowns to empty value
