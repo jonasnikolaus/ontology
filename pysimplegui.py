@@ -4,6 +4,7 @@ from rdflib.plugins.sparql import prepareQuery
 import PySimpleGUI as sg
 import os
 
+# Funktion, um den spezifischen Teil des AI4PD-Namespace aus einem String zu extrahieren
 def extract_ai4pd_part(item):
     parts = item.split('AI4PD:')
     if len(parts) == 2:
@@ -11,24 +12,28 @@ def extract_ai4pd_part(item):
     else:
         return None
 
+# Funktion, um eindeutige Subjekte aus einem RDF-Graphen abzurufen
 def get_unique_subjects(graph):
     query = prepareQuery("SELECT DISTINCT ?s WHERE {?s ?p ?o}")
     results = graph.query(query)
     unique_subjects = [str(result[0]) for result in results]
     return sorted([extract_ai4pd_part(item) for item in unique_subjects if 'AI4PD:' in item])
 
+# Funktion, um eindeutige Prädikate aus einem RDF-Graphen abzurufen
 def get_unique_predicates(graph):
     query = prepareQuery("SELECT DISTINCT ?p WHERE {?s ?p ?o}")
     results = graph.query(query)
     unique_predicates = [str(result[0]) for result in results]
     return sorted([extract_ai4pd_part(item) for item in unique_predicates if 'AI4PD:' in item])
 
+# Funktion, um eindeutige Objekte aus einem RDF-Graphen abzurufen
 def get_unique_objects(graph):
     query = prepareQuery("SELECT DISTINCT ?o WHERE {?s ?p ?o}")
     results = graph.query(query)
     unique_objects = [str(result[0]) for result in results]
     return sorted([extract_ai4pd_part(item) for item in unique_objects if 'AI4PD:' in item])
 
+# Funktion, um alle Individuen aus einer OWL-Datei basierend auf einer SPARQL-Abfrage abzurufen
 def get_all_individuals(owl_file, query):
     owl = Namespace("http://www.w3.org/2002/07/owl#")
     graph = Graph()
@@ -37,6 +42,7 @@ def get_all_individuals(owl_file, query):
     results = graph.query(prepared_query)
     return results
 
+# Funktion, um die SPARQL-Abfrage auszuführen und das Ergebnis im Textbereich anzuzeigen
 def execute_query():
     query = values['query_text'].strip()
     results = get_all_individuals(owl_file_path, query)
@@ -46,6 +52,7 @@ def execute_query():
         result_texts.append(' '.join(result))
     window['result_text'].update('\n'.join(result_texts))
 
+# Funktion, um den eingegebenen Text zu verarbeiten und NLP-Informationen im Textbereich anzuzeigen
 def process_text():
     text = values['input_text'].strip()
     if text:
@@ -74,6 +81,7 @@ def process_text():
 
         window['output_text'].update('\n\n'.join(output_texts))
 
+# Funktion, um eine OWL-Datei auszuwählen und die Dropdown-Menüs mit eindeutigen Subjekten, Prädikaten und Objekten zu füllen
 def select_owl_file():
     global owl_file_path
     owl_file_path = sg.popup_get_file('Select OWL File', file_types=(("OWL Files", "*.owl"),))
@@ -92,6 +100,7 @@ def select_owl_file():
         owl_file_path = ""
         window['selected_file_label'].update("No File Selected")
 
+# Funktion, um den aktuellen Inhalt der Dropdown-Menüs zur Abfrage hinzuzufügen
 def create_query():
     selected_values = [values['dropdown_subject'], values['dropdown_predicate'], values['dropdown_object']]
     query_part = ''
@@ -119,6 +128,7 @@ def create_query():
 
 nlp = spacy.load("de_core_news_sm")
 
+# Definition des GUI-Layouts
 layout = [
     [sg.Text("SPARQL Query:")],
     [sg.Multiline("", size=(50, 10), key="query_text")],
@@ -137,6 +147,7 @@ layout = [
     [sg.Multiline("", size=(50, 5), key="output_text")]
 ]
 
+# Haupt-GUI-Loop
 window = sg.Window("SPARQL Query & NLP GUI", layout)
 
 while True:
