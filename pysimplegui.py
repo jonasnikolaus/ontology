@@ -85,9 +85,9 @@ def select_owl_file():
         unique_subjects = get_unique_subjects(graph)
         unique_predicates = get_unique_predicates(graph)
         unique_objects = get_unique_objects(graph)
-        window['dropdown_subject'].update(values=unique_subjects)
-        window['dropdown_predicate'].update(values=unique_predicates)
-        window['dropdown_object'].update(values=unique_objects)
+        window['dropdown_subject'].update(values=unique_subjects, value='')
+        window['dropdown_predicate'].update(values=unique_predicates, value='')
+        window['dropdown_object'].update(values=unique_objects, value='')
     else:
         owl_file_path = ""
         window['selected_file_label'].update("No File Selected")
@@ -113,10 +113,10 @@ def create_query():
         current_query += f"\n\nPREFIX AI4PD: <http://www.semanticweb.org/gerschuetz/forcude/AI4PD:>\nselect * where {{\n{query_part}\n}}"
     window['query_text'].update(current_query)
 
-    # Reset the dropdowns
-    window['dropdown_subject'].update(set_to_index=0, value='')
-    window['dropdown_predicate'].update(set_to_index=0, value='')
-    window['dropdown_object'].update(set_to_index=0, value='')
+    # Reset the dropdowns to empty value
+    window['dropdown_subject'].update(value='')
+    window['dropdown_predicate'].update(value='')
+    window['dropdown_object'].update(value='')
 
 nlp = spacy.load("de_core_news_sm")
 
@@ -125,9 +125,9 @@ layout = [
     [sg.Multiline("", size=(50, 10), key="query_text")],
     [sg.Button("Select OWL File", key="select_file_button")],
     [sg.Text("No File Selected", size=(40, 1), key="selected_file_label")],
-    [sg.Text("Subject:"), sg.Combo([], size=(40, 1), key="dropdown_subject")],
-    [sg.Text("Predicate:"), sg.Combo([], size=(40, 1), key="dropdown_predicate")],
-    [sg.Text("Object:"), sg.Combo([], size=(40, 1), key="dropdown_object")],
+    [sg.Text("Subject:"), sg.Combo([], size=(40, 1), key="dropdown_subject", enable_events=True)],
+    [sg.Text("Predicate:"), sg.Combo([], size=(40, 1), key="dropdown_predicate", enable_events=True)],
+    [sg.Text("Object:"), sg.Combo([], size=(40, 1), key="dropdown_object", enable_events=True)],
     [sg.Button("Add to Query", key="add_to_query_button"), sg.Button("Execute", key="query_button")],
     [sg.Text("Query Result:")],
     [sg.Multiline("", size=(50, 5), key="result_text")],
