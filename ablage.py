@@ -26,7 +26,7 @@ def get_all_individuals(owl_file, query):
     return results
 
 
-def execute_query(event=None):
+def execute_query():
     # Get the user query from the input field
     query = query_text.get("1.0", tk.END).strip()
 
@@ -38,8 +38,7 @@ def execute_query(event=None):
 
     # Display the results in the result text widget
     for row in results:
-        result = [str(term).split('/')[-1] for term in row]
-        result_text.insert(tk.END, ' '.join(result) + "\n")
+        result_text.insert(tk.END, str(row) + "\n")
 
     # Set focus on the query text widget
     query_text.focus()
@@ -128,7 +127,7 @@ style.configure('TText', font=('Arial', 12))
 # SPARQL Query Section
 query_label = ttk.Label(window, text="SPARQL Query:")
 query_label.pack()
-query_text = tk.Text(window, height=5, width=50, wrap="word")
+query_text = tk.Text(window, height=10, width=50, wrap="word")
 query_text.pack()
 query_text.insert(tk.END, "SELECT ?individual\n    WHERE {\n        ?individual a owl:NamedIndividual .\n    }")
 
@@ -144,13 +143,13 @@ query_button.pack()
 
 result_label = ttk.Label(window, text="Query Result:")
 result_label.pack()
-result_text = tk.Text(window, height=5, width=50, wrap="word")
+result_text = tk.Text(window, height=10, width=50, wrap="word")
 result_text.pack()
 
 # NLP Section
 input_label = ttk.Label(window, text="Input Text:")
 input_label.pack()
-input_text = tk.Text(window, height=5, width=50, wrap="word")
+input_text = tk.Text(window, height=10, width=50, wrap="word")
 input_text.pack()
 input_text.insert(tk.END, "Hallo, ich bin ein Text. Ich stehe hier um die Funktion von NLP zu testen.")
 
@@ -158,14 +157,11 @@ process_button = ttk.Button(window, text="Process Text", command=process_text)
 process_button.pack()
 output_label = ttk.Label(window, text="Output:")
 output_label.pack()
-output_text = tk.Text(window, height=5, width=50, wrap="word")
+output_text = tk.Text(window, height=20, width=50, wrap="word")
 output_text.pack()
 
 # Set focus on the input text at startup
 input_text.focus()
-
-# Bind Return key to execute_query
-window.bind('<Return>', execute_query)
 
 # Positioniere die SPARQL Query Builder UI-Elemente
 variables = ['Filter1', 'Filter2', 'Filter3', 'Filter4', 'Filter5', 'Filter6']

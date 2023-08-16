@@ -1,0 +1,48 @@
+from rdflib import Graph, Namespace
+
+def generate_sparql_queries(owl_file):
+    # OWL Namespace
+    AI4PD = Namespace("http://www.semanticweb.org/gerschuetz/forcude/AI4PD#")
+
+    # RDF Graph
+    graph = Graph()
+    graph.parse(owl_file)
+
+    # SPARQL Query Templates
+    query_templates = [
+        """
+        SELECT ?subject WHERE {{
+            ?subject a {}
+        }}
+        """,
+        """
+        SELECT ?subject ?property ?object WHERE {{
+            ?subject ?property ?object .
+            ?subject a {}
+        }}
+        """,
+        """
+        SELECT ?subject WHERE {{
+            ?subject a {} .
+            FILTER NOT EXISTS {{ ?subject ?property ?object }}
+        }}
+        """
+    ]
+
+    # Generate Queries
+    queries = []
+    for template in query_templates:
+        for cls in graph.subjects(predicate=graph.namespace.RDF.type):
+            query = template.format(cls.n3())
+            queries.append(query)
+
+    return queries
+
+# Example Usage
+owl_file = "AI4PD.owl"
+sparql_queries = generate_sparql_queries(owl_file)
+
+# Print Generated Queries
+for query in sparql_queries:
+    print(query)
+    print("--------------------")
