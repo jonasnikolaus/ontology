@@ -16,7 +16,7 @@ def extract_ai4pd_part(item):
 
 # Function to find the closest match from a list of strings
 def find_closest_match(token, choices):
-    match = difflib.get_close_matches(token, choices, n=1, cutoff=0.5)  # using a cutoff of 0.6 for a decent match
+    match = difflib.get_close_matches(token, choices, n=1, cutoff=0.5)  # using a cutoff of 0.5 for a decent match
     if match:
         return match[0]
     return None
