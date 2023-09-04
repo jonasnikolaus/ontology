@@ -81,13 +81,6 @@ def execute_query():
     except Exception as e:
         window['result_text'].update(f"Fehler: {str(e)}")
 
-# Funktion, um den eingegebenen Text zu verarbeiten und NLP-Informationen im Textbereich anzuzeigen
-synonyms = {
-    'teil': 'partof'
-}
-
-
-
 # Function to call OpenThesaurus API and fetch synonyms
 def call_open_thesaurus_api(word):
     synonyms = set()
@@ -101,7 +94,6 @@ def call_open_thesaurus_api(word):
         print(f"Error while querying OpenThesaurus: {e}")
     print(f"Synonyms fetched from OpenThesaurus for '{word}': {synonyms}")
     return list(synonyms)
-
 
 # Existing hard-coded synonyms
 hard_coded_synonyms = {
@@ -132,8 +124,6 @@ def process_text():
 
     text = current_values['input_text'].strip().lower()
     tokens = text.split()
-    # Tokens durch ihre Synonyme ersetzen, falls vorhanden
-    tokens = [synonyms.get(token, token) for token in tokens]
     
     find_and_replace_synonyms(tokens)  # Adding synonym replacement function call
     print("Debug: Tokens nach Synonym-Ersetzung:", tokens)  # Debug-Ausgabe
@@ -255,7 +245,7 @@ layout = [
     [sg.Text("Query Result:")],
     [sg.Multiline("", size=(50, 5), key="result_text")],
     [sg.Text("Input Text:")],
-#    [sg.Multiline("Hallo, ich bin ein Text. Ich stehe hier um die Funktion von NLP zu testen.", size=(50, 5), key="input_text")],
+#   [sg.Multiline("Hallo, ich bin ein Text. Ich stehe hier um die Funktion von NLP zu testen.", size=(50, 5), key="input_text")],
     [sg.Multiline("Assoziation Bestandteil Assoziation", size=(50, 5), key="input_text")],
     [sg.Button("Process Text", key="process_button")],
     [sg.Text("Output:")],
@@ -281,11 +271,5 @@ while True:
 
 window.close()
 
-
-# Existing hard-coded synonyms
-hard_coded_synonyms = {
-    "teil": "partof",
-    # Add more hard-coded synonyms here
-}
 
 
