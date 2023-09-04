@@ -5,6 +5,7 @@ from rdflib.plugins.sparql import prepareQuery
 import PySimpleGUI as sg
 import os
 import requests
+import time
 
 # Funktion, um den spezifischen Teil des AI4PD-Namespace aus einem String zu extrahieren
 def extract_ai4pd_part(item):
@@ -134,10 +135,6 @@ def process_text():
     predicates = list(window['dropdown_predicate'].Values)
     objects = list(window['dropdown_object'].Values)
     
-#   print("Debug: Subjects in dropdown:", subjects)  # Debug-Ausgabe
-#   print("Debug: Predicates in dropdown:", predicates)  # Debug-Ausgabe
-#   print("Debug: Objects in dropdown:", objects)  # Debug-Ausgabe
-    
     subject_match = find_closest_match(tokens[0], subjects) if len(tokens) > 0 else None
     predicate_match = find_closest_match(tokens[1], predicates) if len(tokens) > 1 else None
     object_match = find_closest_match(tokens[2], objects) if len(tokens) > 2 else None
@@ -152,8 +149,7 @@ def process_text():
     window['dropdown_object'].update(value=object_match)
 
 
-
-
+    #Informationen zu NLP, Tokens, Wortarten etc.
     if text:
         doc = nlp(text)
         output_texts = []
@@ -270,6 +266,3 @@ while True:
         create_query()
 
 window.close()
-
-
-
