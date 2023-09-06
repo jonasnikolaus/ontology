@@ -5,6 +5,7 @@ from rdflib.plugins.sparql import prepareQuery
 import PySimpleGUI as sg
 import os
 import requests
+import time
 
 # Funktion, um den spezifischen Teil des AI4PD-Namespace aus einem String zu extrahieren
 def extract_ai4pd_part(item):
@@ -51,13 +52,43 @@ def get_all_individuals(owl_file, query):
     results = graph.query(prepared_query)
     return results
 
+def nlp_query(matched_subjects, matched_predicates, matched_objects):
+    query_parts = []
+    for subject, predicate, object_ in zip(matched_subjects, matched_predicates, matched_objects):
+        query_part = ''
+        if subject:
+            query_part += f'{subject} '
+        if predicate:
+            query_part += f'{predicate} '
+        if object_:
+            query_part += f'{object_} '
+        
+        query_part += '.'
+        query_parts.append(query_part)
+
+    current_query = values['query_text'].strip()
+    select_value = values['input_select'].strip()
+    current_query = current_query.replace("select *", f"select {select_value}")
+
+    if "}" in current_query:
+        # Replace the last "}" with the new query parts, then re-add "}"
+        current_query = current_query.rsplit("}", 1)[0] + '\n' + '\n'.join(query_parts) + "\n}"
+    else:
+        current_query += f"PREFIX AI4PD: <http://www.semanticweb.org/gerschuetz/forcude/AI4PD:>\nselect * where {{\n{' '.join(query_parts)}}}"
+    
+    window['query_text'].update(current_query)
+
 # Funktion, um die SPARQL-Abfrage auszuführen und das Ergebnis im Textbereich anzuzeigen
 def execute_query():
     try:
         query = values['query_text'].strip()
         select_value = values['input_select'].strip()
         query = query.replace('*', select_value)
+        #results = get_all_individuals(owl_file_path, query)
         result_texts = []
+       # for row in results:
+         #   result = [str(term).split('/')[-1] for term in row]
+         #   result_texts.append(' '.join(result))
         if not result_texts:
             result_texts.append("Keine Ergebnisse gefunden.")
         window['result_text'].update('\n'.join(result_texts))
@@ -105,32 +136,63 @@ def find_and_replace_synonyms(word_list):
 def process_text():
     current_values = window.read()[1]  # Lesen der aktuellen Werte aus dem Fenster
 
-    text = current_values['input_text'].strip().lower()
-    tokens = text.split()
+    segments = current_values['input_text'].strip().lower().split('&')
     
-    find_and_replace_synonyms(tokens)  # Adding synonym replacement function call
-    print("Debug: Tokens nach Synonym-Ersetzung:", tokens)  # Debug-Ausgabe
-    print("Debug: Tokens:", tokens)  # Debug-Ausgabe
+    matched_subjects = []
+    matched_predicates = []
+    matched_objects = []
+    
+    for segment in segments:
+        text = segment.strip()
+        tokens = text.split()
 
-    # Finden der besten Übereinstimmungen für jedes Token in den verfügbaren Dropdown-Optionen
-    subjects = list(window['dropdown_subject'].Values)
-    predicates = list(window['dropdown_predicate'].Values)
-    objects = list(window['dropdown_object'].Values)
-    
-    subject_match = find_closest_match(tokens[0], subjects) if len(tokens) > 0 else None
-    predicate_match = find_closest_match(tokens[1], predicates) if len(tokens) > 1 else None
-    object_match = find_closest_match(tokens[2], objects) if len(tokens) > 2 else None
-    
-    print("Debug: Matched subject:", subject_match)  # Debug-Ausgabe
-    print("Debug: Matched predicate:", predicate_match)  # Debug-Ausgabe
-    print("Debug: Matched object:", object_match)  # Debug-Ausgabe
-    
-    # Aktualisieren der Dropdown-Menüs mit den gefundenen Übereinstimmungen
-    window['dropdown_subject'].update(value=subject_match)
-    window['dropdown_predicate'].update(value=predicate_match)
-    window['dropdown_object'].update(value=object_match)
-    window.write_event_value('add_to_query_button', '')  # Automatically trigger 'Add to Query' button
+        find_and_replace_synonyms(tokens)  # Adding synonym replacement function call
+        print("Debug: Tokens nach Synonym-Ersetzung:", tokens)  # Debug-Ausgabe
 
+        # Finden der besten Übereinstimmungen für jedes Token in den verfügbaren Dropdown-Optionen
+        subjects = list(window['dropdown_subject'].Values)
+        predicates = list(window['dropdown_predicate'].Values)
+        objects = list(window['dropdown_object'].Values)
+        
+        subject_match = find_closest_match(tokens[0], subjects) if len(tokens) > 0 else None
+        predicate_match = find_closest_match(tokens[1], predicates) if len(tokens) > 1 else None
+        object_match = find_closest_match(tokens[2], objects) if len(tokens) > 2 else None
+        
+        window['dropdown_subject'].update(value=subject_match)
+        window['dropdown_predicate'].update(value=predicate_match)
+        window['dropdown_object'].update(value=object_match)
+
+        matched_subjects.append(subject_match)
+        matched_predicates.append(predicate_match)
+        matched_objects.append(object_match)
+
+    # Aufbau des Query-Strings mit den gesammelten matched_subjects, matched_predicates und matched_objects
+    query_parts = []
+    for subject, predicate, object_ in zip(matched_subjects, matched_predicates, matched_objects):
+        query_part = ''
+        if subject:
+            query_part += f'{subject} '
+        if predicate:
+            query_part += f'{predicate} '
+        if object_:
+            query_part += f'{object} '
+        
+        query_part += '.'
+        query_parts.append(query_part)
+
+    current_query = values['query_text'].strip()
+    select_value = values['input_select'].strip()
+    current_query = current_query.replace("select *", f"select {select_value}")
+
+    if "}" in current_query:
+          current_query = current_query.replace("}", f"{query_part}}}")
+    else:
+        current_query += f"PREFIX AI4PD: <http://www.semanticweb.org/gerschuetz/forcude/AI4PD:>\nselect * where {{\n{' '.join(query_parts)}}}"
+    
+    #window['query_text'].update(current_query)
+    
+    #window.write_event_value('add_to_query_button', '')  # Automatically trigger 'Add to Query' button
+    nlp_query(matched_subjects, matched_predicates, matched_objects)
 
     #Informationen zu NLP, Tokens, Wortarten etc.
     if text:
