@@ -43,22 +43,10 @@ def get_unique_objects(graph):
     unique_objects = [str(result[0]) for result in results]
     return sorted([extract_ai4pd_part(item) for item in unique_objects if 'AI4PD:' in item])
 
-# Funktion, um alle Individuen aus einer OWL-Datei basierend auf einer SPARQL-Abfrage abzurufen
-def get_all_individuals(owl_file, query):
-    # Initialisierung des Namespace für OWL und des RDF-Graphen
-    owl = Namespace("http://www.w3.org/2002/07/owl#")
-    graph = Graph()
-    # Einlesen der OWL-Datei in den Graphen
-    graph.parse(owl_file)
-    # Vorbereitung und Ausführung der SPARQL-Abfrage
-    prepared_query = prepareQuery(query)
-    results = graph.query(prepared_query)
-    return results
-
-# Funktion, um die nähesten Werte aus den Dropdown Menüs zu finden und den nähesten zurückzugeben
+# Funktion, um die nähesten Werte aus den Dropdown-Menüs zu finden und den nähesten zurückzugeben
 def find_closest_match(token, choices, replace):
     # Verwendet die difflib-Bibliothek, um den ähnlichsten String zu finden
-    match = difflib.get_close_matches(token, choices, n=1, cutoff=0.5) # 0.5 ist die Mindestübereinstimmun
+    match = difflib.get_close_matches(token, choices, n=1, cutoff=0.5) # 0.5 ist die Mindestübereinstimmung
     if match:
         return match[0]
     # Wenn kein Match gefunden wird, wird der Originalwert zurückgegeben
@@ -80,17 +68,17 @@ def nlp_query(matched_subjects, matched_predicates, matched_objects):
         if object_:
             query_part += f'{object_} '
         
-        query_part += '.' + "\n" # Ein Punkt markiert das Ende eines Tripels in SPARQL, hinzufügen neuer Zeile
+        query_part += '.' + "\n" # Ein Punkt markiert das Ende eines Tripels in SPARQL, Hinzufügen neuer Zeile
         query_parts.append(query_part)
 
-    # Hier wird die aktuelle Abfrage aus dem GUI-Feld geholt
+    # Hier wird die aktuelle Abfrage aus dem GUI-Feld übernommen
     current_query = values['query_text'].strip()
     # Auch das "Select"-Feld wird ausgelesen
     select_value = values['input_select'].strip()
     # Das Sternchen (*) wird durch den Wert im "Select"-Feld ersetzt
     current_query = current_query.replace("select *", f"select {select_value}")
 
-    # Die neuen Abfrage-Teile werden zur bestehenden Abfrage hinzugefügt
+    # Die neuen Abfrageteile werden zur bestehenden Abfrage hinzugefügt
     if "}" in current_query:
         current_query = current_query.rsplit("}", 1)[0]  + '\n'.join(query_parts) + "\n}"
     else:
@@ -108,12 +96,11 @@ def execute_query():
         query = query.replace('*', select_value)
         result_texts = []
         
-        # Hier wäre normalerweise die Ausführung der Abfrage und das Sammeln der Ergebnisse
-        # Da das fehlt, wird eine Nachricht über keine Ergebnisse angezeigt
+        #Wenn „result_texts“ leer ist, wird „Keine Ergebnisse gefunden.“ ausgegeben
         if not result_texts:
             result_texts.append("Keine Ergebnisse gefunden.")
         window['result_text'].update('\n'.join(result_texts))
-    # Bei einem Fehler wird die Fehlermeldung im Ergebnisbereich
+    # Bei einem Fehler wird die Fehlermeldung im Ergebnisbereich ausgegeben
     except Exception as e:
         window['result_text'].update(f"Fehler: {str(e)}")
 
@@ -121,7 +108,7 @@ def execute_query():
 def call_open_thesaurus_api(word):
     synonyms = set()
     try:
-        # Ein API-Aufruf wird gemacht, um die Synonyme für das Wort zu bekommen
+        # Ein API-Aufruf wird getätigt, um die Synonyme für das Wort zu erhalten
         response = requests.get(f"https://www.openthesaurus.de/synonyme/search?q={word}&format=application/json")
         data = response.json()
         for meaning in data.get('synsets', []):
@@ -133,7 +120,7 @@ def call_open_thesaurus_api(word):
     print(f"Synonyms fetched from OpenThesaurus for '{word}': {synonyms}")
     return list(synonyms)
 
-# Synonmye für die Ersetzung werden hier festgelegt
+# Synonyme für die Ersetzung werden hier festgelegt
 hard_coded_synonyms = {
     "teil": "partof",
     # Weitere Synonyme hier hinzufügen
@@ -157,13 +144,13 @@ def find_and_replace_synonyms(word_list):
                 word_list[index] = hard_coded_synonyms[synonym.lower()]
                 break
 
-# Funktion um den eingegebenen Text mit NLP zu interpretieren und verarbeiten
+# Funktion, um den eingegebenen Text mit NLP zu interpretieren und zu verarbeiten
 def process_text():
 
     # Auslesen der aktuellen Werte aus dem Fenster
     current_values = window.read()[1]  
 
-    # Aufteilen des eingegebenen Textes in Segmente, getrennt durch "&"
+    # Aufteilen des eingegebenen Texts in Segmente, getrennt durch "&"
     segments = current_values['input_text'].strip().lower().split('&')
 
     # Listen zur Speicherung der erkannten Subjekte, Prädikate und Objekte für die spätere Erstellung der Query
@@ -186,7 +173,7 @@ def process_text():
         predicates = list(window['dropdown_predicate'].Values)
         objects = list(window['dropdown_object'].Values)
 
-        # Finden der am besten passenden Übereinstimmungen für jedes Token, wenn keines gefunden wird, wird der eingegeben Wert übernommen
+        # Finden der am besten passenden Übereinstimmungen für jedes Token. Wenn keines gefunden wird, wird der eingegebene Wert übernommen.
         subject_match = find_closest_match(tokens[0], subjects, tokens[0]) if len(tokens) > 0 else None
         predicate_match = find_closest_match(tokens[1], predicates, tokens[1]) if len(tokens) > 1 else None
         object_match = find_closest_match(tokens[2], objects, tokens[2]) if len(tokens) > 2 else None
@@ -219,10 +206,10 @@ def process_text():
     else:
         current_query += f"PREFIX AI4PD: <http://www.semanticweb.org/gerschuetz/forcude/AI4PD:>\nselect * where {{\n{' '.join(query_parts)}}}"
         
-    # Teilquerys werden Automatisch hinzugefügt
+    # Teilquerys werden automatisch hinzugefügt
     nlp_query(matched_subjects, matched_predicates, matched_objects)
 
-    #Informationen zu NLP, Tokens, Wortarten etc.
+    #Informationen zu NLP, Tokens, Wortarten, etc.
     if text:
         doc = nlp(text)
         output_texts = []
@@ -311,7 +298,7 @@ layout = [
     # Textfeld für die SPARQL-Abfrage
     [sg.Text("SPARQL Query:")],
     [sg.Multiline("", size=(50, 10), key="query_text")],
-    # Button, um eine OWL-Datei auszuwählen
+    # Button für die Auswahl einer OWL-Datei
     [sg.Button("Select OWL File", key="select_file_button")],
     [sg.Text("No File Selected", size=(40, 1), key="selected_file_label")],
     # Eingabefeld für das SELECT-Statement in SPARQL
@@ -328,7 +315,7 @@ layout = [
     [sg.Multiline("", size=(50, 5), key="result_text")],
     [sg.Text("Input Text:")],
     [sg.Multiline("Assoziation Bestandteil Assoziation & Hund Katze Maus", size=(50, 5), key="input_text")],
-    # Button, um den Text zu verarbeiten
+    # Button für die Verarbeitung des Texts
     [sg.Button("Process Text", key="process_button")],
     # Textfeld für die NLP-Ausgabe
     [sg.Text("Output:")],
@@ -350,7 +337,7 @@ while True:
     # Verarbeiten des Textes mit NLP    
     elif event == "process_button":
         process_text()
-    # OWL-Datei auswählen
+    # Auswählen der OWL-Datei 
     elif event == "select_file_button":
         select_owl_file()
     # Hinzufügen zur SPARQL-Abfrage
