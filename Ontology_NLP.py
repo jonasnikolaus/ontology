@@ -6,6 +6,7 @@ from rdflib.plugins.sparql import prepareQuery  # zum Vorbereiten von SPARQL-Abf
 import PySimpleGUI as sg  # für die GUI
 import os  # für Dateioperationen
 import requests  # für HTTP-Anfragen (z.B. API-Aufrufe)
+import re # für das aufteilen am String "und"
 
 # Funktion, um den spezifischen Teil des AI4PD-Namespace aus einem String zu extrahieren
 def extract_ai4pd_part(item):
@@ -90,15 +91,24 @@ def nlp_query(matched_subjects, matched_predicates, matched_objects):
 # Funktion, um die SPARQL-Abfrage auszuführen und das Ergebnis im Textbereich anzuzeigen
 def execute_query():
     try:
-        # Die aktuelle Abfrage und der Wert im "Select"-Feld werden ausgelesen
+         # Die aktuelle Abfrage wird ausgelesen
         query = values['query_text'].strip()
-        select_value = values['input_select'].strip()
-        query = query.replace('*', select_value)
+        # Die SPARQL-Abfrage wird ausgeführt
+        results = graph.query(query)
+        # Vorbereitung der Ergebnistexte
         result_texts = []
-        
-        #Wenn „result_texts“ leer ist, wird „Keine Ergebnisse gefunden.“ ausgegeben
+        for result in results:
+            # Extrahieren des relevanten Teils des Ergebnis-Strings
+            result_text = str(result[0])
+            extracted_part = extract_ai4pd_part(result_text)
+            # Fügen Sie nur den extrahierten Teil zur Ergebnisliste hinzu, falls vorhanden
+            if extracted_part:
+                result_texts.append(extracted_part)
+
+        # Wenn keine Ergebnisse gefunden wurden
         if not result_texts:
             result_texts.append("Keine Ergebnisse gefunden.")
+        # Update des Ergebnisfeldes im GUI
         window['result_text'].update('\n'.join(result_texts))
     # Bei einem Fehler wird die Fehlermeldung im Ergebnisbereich ausgegeben
     except Exception as e:
@@ -123,6 +133,8 @@ def call_open_thesaurus_api(word):
 # Synonyme für die Ersetzung werden hier festgelegt
 hard_coded_synonyms = {
     "teil": "partof",
+    "eine": "a",
+    "ein":"a",
     # Weitere Synonyme hier hinzufügen
 }
 
@@ -151,7 +163,9 @@ def process_text():
     current_values = window.read()[1]  
 
     # Aufteilen des eingegebenen Texts in Segmente, getrennt durch "&"
-    segments = current_values['input_text'].strip().lower().split('&')
+    #segments = current_values['input_text'].strip().lower().split('&')
+    segments = re.split(r'&|\bund\b', current_values['input_text'].strip().lower())
+
 
     # Listen zur Speicherung der erkannten Subjekte, Prädikate und Objekte für die spätere Erstellung der Query
     matched_subjects = []
@@ -238,6 +252,7 @@ def process_text():
 
 # Funktion, um eine OWL-Datei auszuwählen und die Dropdown-Menüs mit eindeutigen Subjekten, Prädikaten und Objekten zu füllen
 def select_owl_file():
+    global graph
     global owl_file_path # Globale Variable für den Dateipfad
     owl_file_path = sg.popup_get_file('Select OWL File', file_types=(("OWL Files", "*.owl"),))
     if owl_file_path:
@@ -314,7 +329,7 @@ layout = [
     # Textfeld für die NLP-Eingabe
     [sg.Multiline("", size=(50, 5), key="result_text")],
     [sg.Text("Input Text:")],
-    [sg.Multiline("Assoziation Bestandteil Assoziation & Hund Katze Maus", size=(50, 5), key="input_text")],
+    [sg.Multiline("?individual Bestandteil Developmentteam und ?individual eine person", size=(50, 5), key="input_text")],
     # Button für die Verarbeitung des Texts
     [sg.Button("Process Text", key="process_button")],
     # Textfeld für die NLP-Ausgabe

@@ -1039,7 +1039,23 @@
     ///////////////////////////////////////////////////////////////////////////////////////
      -->
 
-    
+    <!-- Team Development -->
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/gerschuetz/forcude/AI4PD:DevelopmentTeam">
+        <rdf:type rdf:resource="http://www.semanticweb.org/gerschuetz/forcude/AI4PD:Team"/>
+    </owl:NamedIndividual>
+
+    <!-- Person Max Mustermann -->
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/gerschuetz/forcude/AI4PD:MaxMustermann">
+        <rdf:type rdf:resource="http://www.semanticweb.org/gerschuetz/forcude/AI4PD:Person"/>
+        <AI4PD:partOf rdf:resource="http://www.semanticweb.org/gerschuetz/forcude/AI4PD:DevelopmentTeam"/>
+        <AI4PD:partOf rdf:resource="http://www.semanticweb.org/gerschuetz/forcude/AI4PD:Team"/>
+    </owl:NamedIndividual>
+
+    <!-- Tool Excel -->
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/gerschuetz/forcude/AI4PD:Excel">
+        <rdf:type rdf:resource="http://www.semanticweb.org/gerschuetz/forcude/AI4PD:Tool"/>
+        <AI4PD:partOf rdf:resource="http://www.semanticweb.org/gerschuetz/forcude/AI4PD:DevelopmentTeam"/>
+    </owl:NamedIndividual>
 
 
     <!-- http://www.semanticweb.org/gerschuetz/forcude/AI4PD:RapidMiner -->
